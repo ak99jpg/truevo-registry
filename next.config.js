@@ -1,12 +1,13 @@
 // next.config.js
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'export', // This enables static export
+  output: 'export', // REQUIRED for Cloudflare Pages
   images: {
-    unoptimized: true, // Required for static export
+    unoptimized: true, // REQUIRED for static export
   },
-  // Remove trailing slashes if needed
-  trailingSlash: false,
+  // Optional: Add trailing slash for better compatibility
+  trailingSlash: true,
 }
 
 module.exports = nextConfig
+
