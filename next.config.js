@@ -1,15 +1,13 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'export',
   trailingSlash: true,
   images: {
     unoptimized: true,
   },
-  // Disable experimental features that cause edge issues
-  experimental: {
-    serverComponentsExternalPackages: [],
-  },
+  // Enable React Strict Mode
+  reactStrictMode: true,
 };
 
 module.exports = nextConfig;
+
 
