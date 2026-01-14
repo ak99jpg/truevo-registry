@@ -1,6 +1,5 @@
 {
   "scripts": {
-    "build": "next build",
-    "postbuild": "cp -r public .next/out/ && cp _redirects .next/out/ && cp _headers .next/out/ || true"
+    "build": "npm install && next build"
   }
 }
