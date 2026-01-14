@@ -1,11 +1,16 @@
-// app/blog/[id]/page.js - UPDATED WITH WORKING LIKE/DISLIKE
+// app/blog/[id]/page.js - FIXED VERSION
 'use client'
 import { useState, useEffect } from 'react'
 import { useParams, useRouter } from 'next/navigation'
 import { supabase } from '@/lib/supabase'
 import Link from 'next/link'
 
-export const runtime = 'edge';
+// Add this for static generation
+export async function generateStaticParams() {
+  // Return empty array - pages will be generated on-demand
+  return [];
+}
+
 export default function BlogPostPage() {
   const { id } = useParams()
   const router = useRouter()
@@ -29,6 +34,12 @@ export default function BlogPostPage() {
       fetchUserReaction(data.ip)
     } catch (error) {
       console.error('Error getting IP:', error)
+      // Fallback to localStorage or session storage
+      const storedIp = localStorage.getItem('user_ip')
+      if (storedIp) {
+        setUserIp(storedIp)
+        fetchUserReaction(storedIp)
+      }
     }
   }
 
@@ -328,5 +339,4 @@ export default function BlogPostPage() {
       </footer>
     </div>
   )
-
 }
