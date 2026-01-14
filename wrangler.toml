@@ -7,8 +7,5 @@ pages_build_output_dir = ".next/standalone"
 [vars]
 NODE_VERSION = "18"
 
-[[build]]
+[build]
 command = "npm run build"
-
-[[build.upload]]
-directory = ".next/standalone"
