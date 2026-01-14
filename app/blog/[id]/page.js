@@ -5,6 +5,7 @@ import { useParams, useRouter } from 'next/navigation'
 import { supabase } from '@/lib/supabase'
 import Link from 'next/link'
 
+export const runtime = 'edge';
 export default function BlogPostPage() {
   const { id } = useParams()
   const router = useRouter()
@@ -327,4 +328,5 @@ export default function BlogPostPage() {
       </footer>
     </div>
   )
+
 }
