@@ -1,9 +1,15 @@
-// next.config.js
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'standalone', // Required for Cloudflare
-  trailingSlash: false
-}
+  output: 'export',
+  trailingSlash: true,
+  images: {
+    unoptimized: true,
+  },
+  // Disable experimental features that cause edge issues
+  experimental: {
+    serverComponentsExternalPackages: [],
+  },
+};
 
 module.exports = nextConfig;
 
