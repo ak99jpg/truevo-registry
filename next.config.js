@@ -2,8 +2,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: 'standalone', // Required for Cloudflare
+  trailingSlash: false
   images: {
-    domains: ['your-supabase-url.supabase.co'],
+    unoptimized: true,
+    domains: ['https://glqrnmfzopwzmiiyvwst.supabase.co'],
   },
   // Disable test pages in production
   async redirects() {
@@ -26,5 +28,6 @@ const nextConfig = {
     ];
   },
 };
+
 
 module.exports = nextConfig;
