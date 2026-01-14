@@ -1,13 +1,12 @@
+// next.config.js
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  trailingSlash: true,
+  output: 'export', // This enables static export
   images: {
-    unoptimized: true,
+    unoptimized: true, // Required for static export
   },
-  // Enable React Strict Mode
-  reactStrictMode: true,
-};
+  // Remove trailing slashes if needed
+  trailingSlash: false,
+}
 
-module.exports = nextConfig;
-
-
+module.exports = nextConfig
