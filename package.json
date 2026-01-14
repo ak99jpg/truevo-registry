@@ -1,26 +1,24 @@
-{ 
-  "name": "truevo-registry", 
-  "version": "1.0.0", 
-  "private": true, 
-  "scripts": { 
-    "dev": "next dev", 
-    "postbuild": "rm -rf .next/cache/webpack && echo 'Removed webpack cache'"
-    "build": "next build", 
-    "start": "next start", 
-    "lint": "next lint" 
-  }, 
-  "dependencies": { 
-    "@supabase/supabase-js": "^2.39.7", 
-    "next": "14.2.13", 
-    "react": "^18", 
-    "react-dom": "^18" 
-  }, 
-  "devDependencies": { 
-    "autoprefixer": "^10.0.1", 
-    "eslint": "^8.57.0", 
-    "eslint-config-next": "14.2.13", 
-    "postcss": "^8", 
-    "tailwindcss": "^3.3.0" 
-  } 
-} 
-
+{
+  "name": "truevo-registry",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.39.7",
+    "next": "^14.2.35",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.16",
+    "eslint": "^8.56.0",
+    "eslint-config-next": "14.2.13",
+    "postcss": "^8.4.32",
+    "tailwindcss": "^3.4.0"
+  }
+}
