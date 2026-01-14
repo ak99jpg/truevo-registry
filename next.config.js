@@ -1,13 +1,24 @@
-// next.config.js
-/** @type {import('next').NextConfig} */
-const nextConfig = {
-  output: 'export', // REQUIRED for Cloudflare Pages
-  images: {
-    unoptimized: true, // REQUIRED for static export
+{
+  "name": "truevo-registry",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
   },
-  // Optional: Add trailing slash for better compatibility
-  trailingSlash: true,
+  "dependencies": {
+    "@supabase/supabase-js": "^2.39.7",
+    "next": "14.2.13",
+    "react": "^18",
+    "react-dom": "^18"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.0.1",
+    "eslint": "^8.57.0",
+    "eslint-config-next": "14.2.13",
+    "postcss": "^8",
+    "tailwindcss": "^3.3.0"
+  }
 }
-
-module.exports = nextConfig
-
