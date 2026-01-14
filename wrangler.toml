@@ -4,9 +4,4 @@ compatibility_date = "2024-01-01"
 compatibility_flags = ["nodejs_compat"]
 pages_build_output_dir = ".next/standalone"
 
-[vars]
-NODE_VERSION = "20"
-
-[build]
-command = "npm run build"
 
