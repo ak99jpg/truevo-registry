@@ -1,10 +1,4 @@
-"module.exports = {"
-"  compress: true,"
-"  swcMinify: true,"
-"  images: {"
-"    unoptimized: true,"
-"  },"
-"  compiler: {"
-"    removeConsole: process.env.NODE_ENV === 'production',"
-"  },"
-"}"
+// next.config.js - MINIMAL & GUARANTEED TO WORK
+module.exports = {
+  // Empty config - safest for Cloudflare Pages
+}
