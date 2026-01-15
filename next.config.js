@@ -1,10 +1,6 @@
 module.exports = {
-  
-  basePath: '',
-  
-    trailingSlash: false,
-  
-   images: {
-    unoptimized: true,
-  },
+  output: 'export',  
+  images: {
+    unoptimized: true
+  }
 }
