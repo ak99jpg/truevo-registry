@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Truevo Registry</title>
+    <style>
+        body { font-family: sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; }
+        .blog-post { border: 1px solid #ddd; padding: 20px; margin: 20px 0; }
+    </style>
+</head>
+<body>
+    <h1>Truevo Registry Blog</h1>
+    
+    <div id="blog-list">
+        <p>Loading blogs...</p>
+    </div>
+
+    <script>
+        // Direct Supabase fetch (no Next.js needed)
+        async function loadBlogs() {
+            const supabaseUrl = 'https://your-project.supabase.co';
+            const supabaseKey = 'your-anon-key';
+            
+            try {
+                const response = await fetch(
+                    `${supabaseUrl}/rest/v1/blogs?select=*`,
+                    {
+                        headers: {
+                            'apikey': supabaseKey,
+                            'Authorization': `Bearer ${supabaseKey}`
+                        }
+                    }
+                );
+                
+                const blogs = await response.json();
+                const container = document.getElementById('blog-list');
+                
+                container.innerHTML = blogs.map(blog => `
+                    <div class="blog-post">
+                        <h2>${blog.title}</h2>
+                        <p>${blog.excerpt || ''}</p>
+                        <div>${new Date(blog.created_at).toLocaleDateString()}</div>
+                        <div>${blog.content || ''}</div>
+                    </div>
+                `).join('');
+                
+            } catch (error) {
+                document.getElementById('blog-list').innerHTML = 
+                    `<p style="color: red;">Error loading blogs: ${error.message}</p>`;
+            }
+        }
+        
+        loadBlogs();
+    </script>
+</body>
+</html>
