@@ -1,1 +1,1 @@
-echo "module.exports = {}" > next.config.js
+module.exports = {}
