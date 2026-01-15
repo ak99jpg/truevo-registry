@@ -2,25 +2,13 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { useParams, useRouter } from 'next/navigation'
+import { useParams } from 'next/navigation'
 import { supabase } from '@/lib/supabase'
 import Link from 'next/link'
 import Image from 'next/image'
 
-export async function generateStaticParams() {
-  const { data: blogs } = await supabase
-    .from('blogs')
-    .select('id')
-    .eq('is_published', true)
-  
-  return blogs?.map(blog => ({ 
-    id: blog.id.toString() 
-  })) || []
-}
-
 export default function BlogPostPage() {
   const { id } = useParams()
-  const router = useRouter()
   const [blog, setBlog] = useState(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
@@ -190,4 +178,3 @@ export default function BlogPostPage() {
     </div>
   )
 }
-
