@@ -2,31 +2,35 @@
 import { supabase } from '@/lib/supabase'
 import { notFound } from 'next/navigation'
 
-// This function runs on the server for each request
 export default async function BlogPost({ params }) {
   const { id } = params
   
-  // Fetch blog post from Supabase
-  const { data: post, error } = await supabase
-    .from('blog_posts') // Change to your actual table name
+  // Fetch blog post by ID
+  const { data: blog, error } = await supabase
+    .from('blogs')
     .select('*')
     .eq('id', id)
+    .eq('published', true) // if you have a published column
     .single()
   
-  if (error || !post) {
+  if (error || !blog) {
     notFound()
   }
   
   return (
     <div className="container mx-auto px-4 py-8">
       <article className="max-w-4xl mx-auto">
-        <h1 className="text-4xl font-bold mb-4">{post.title}</h1>
+        <h1 className="text-4xl font-bold mb-4">{blog.title}</h1>
+        
+        {/* Blog metadata */}
         <div className="text-gray-600 mb-6">
-          Published on {new Date(post.created_at).toLocaleDateString()}
+          Published on {new Date(blog.created_at).toLocaleDateString()}
         </div>
+        
+        {/* Blog content */}
         <div 
           className="prose prose-lg max-w-none"
-          dangerouslySetInnerHTML={{ __html: post.content }}
+          dangerouslySetInnerHTML={{ __html: blog.content }}
         />
       </article>
     </div>
@@ -37,20 +41,20 @@ export default async function BlogPost({ params }) {
 export async function generateMetadata({ params }) {
   const { id } = params
   
-  const { data: post } = await supabase
-    .from('blog_posts')
+  const { data: blog } = await supabase
+    .from('blogs')
     .select('title, excerpt')
     .eq('id', id)
     .single()
   
-  if (!post) {
+  if (!blog) {
     return {
-      title: 'Post Not Found',
+      title: 'Blog Post Not Found',
     }
   }
   
   return {
-    title: post.title,
-    description: post.excerpt || post.title,
+    title: blog.title,
+    description: blog.excerpt || blog.title,
   }
 }
